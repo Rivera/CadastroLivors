@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CadastroLivros.Domain\CadastroLivros.Domain.csproj" />
+    <ProjectReference Include="..\CadastroLivros.Infra.Data\CadastroLivros.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
