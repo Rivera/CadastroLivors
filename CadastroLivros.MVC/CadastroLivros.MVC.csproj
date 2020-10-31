@@ -180,6 +180,20 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CadastroLivros.Application\CadastroLivros.Application.csproj">
+      <Project>{5d5692cc-178f-47cb-9c2d-7ad9eeb14650}</Project>
+      <Name>CadastroLivros.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CadastroLivros.Domain\CadastroLivros.Domain.csproj">
+      <Project>{ed76422d-bd7b-4dc1-a072-60e80b417c88}</Project>
+      <Name>CadastroLivros.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CadastroLivros.Infra.Data\CadastroLivros.Infra.Data.csproj">
+      <Project>{af382f54-f1e4-46d7-bd21-79f13f57ade1}</Project>
+      <Name>CadastroLivros.Infra.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
