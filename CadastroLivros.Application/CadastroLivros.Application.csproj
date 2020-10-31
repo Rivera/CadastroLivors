@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppLivroService.cs" />
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="Interfaces\IAppAssuntoService.cs" />
+    <Compile Include="Interfaces\IAppAutorService.cs" />
+    <Compile Include="Interfaces\IAppBaseService.cs" />
+    <Compile Include="Interfaces\IAppLivroService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

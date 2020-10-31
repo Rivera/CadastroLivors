@@ -55,7 +55,12 @@
     <Compile Include="EntityConfig\AssuntoConfiguration.cs" />
     <Compile Include="EntityConfig\AutorConfiguration.cs" />
     <Compile Include="EntityConfig\LivroConfiguration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AssuntoRepository.cs" />
+    <Compile Include="Repositories\AutorRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\LivroRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CadastroLivros.Domain\CadastroLivros.Domain.csproj">
@@ -67,6 +72,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

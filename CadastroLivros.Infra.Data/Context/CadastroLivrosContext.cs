@@ -2,6 +2,7 @@
 using CadastroLivros.Infra.Data.EntityConfig;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Collections.Generic;
 
 namespace CadastroLivros.Infra.Data.Context
 {
@@ -31,6 +32,26 @@ namespace CadastroLivros.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
 
+            modelBuilder.Entity<Livro>()
+                .HasMany(a => (ICollection<Assunto>)a.Assuntos)
+                .WithMany(l => (ICollection<Livro>)l.Livros)
+                .Map(la =>
+                {
+                    la.MapLeftKey("LivroID");
+                    la.MapRightKey("AssuntoID");
+                    la.ToTable("Livro_Assunto");
+                });
+
+            modelBuilder.Entity<Livro>()
+                .HasMany(a => (ICollection<Autor>)a.Autores)
+                .WithMany(l => (ICollection<Livro>)l.Livros)
+                .Map(la =>
+                {
+                    la.MapLeftKey("LivroID");
+                    la.MapRightKey("AutorID");
+                    la.ToTable("Livro_Autor");
+                });
+            
             modelBuilder.Configurations.Add(new LivroConfiguration());
             modelBuilder.Configurations.Add(new AutorConfiguration());
             modelBuilder.Configurations.Add(new AssuntoConfiguration());
