@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppAssuntoService.cs" />
+    <Compile Include="AppAutorService.cs" />
     <Compile Include="AppLivroService.cs" />
     <Compile Include="AppServiceBase.cs" />
     <Compile Include="Interfaces\IAppAssuntoService.cs" />
@@ -53,10 +55,6 @@
     <ProjectReference Include="..\CadastroLivros.Domain\CadastroLivros.Domain.csproj">
       <Project>{ed76422d-bd7b-4dc1-a072-60e80b417c88}</Project>
       <Name>CadastroLivros.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\CadastroLivros.Services.csproj">
-      <Project>{0d9ea6dc-e02d-4094-a178-73021fcdc6ee}</Project>
-      <Name>CadastroLivros.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

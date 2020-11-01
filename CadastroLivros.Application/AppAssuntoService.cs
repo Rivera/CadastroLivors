@@ -3,7 +3,7 @@ using CadastroLivros.Domain.Entities;
 
 namespace CadastroLivros.Application
 {
-    public class AppLivroService : AppServiceBase<Livro>, IAppLivroService
+    public class AppAssuntoService : AppServiceBase<Assunto>, IAppAssuntoService
     {
     }
 }

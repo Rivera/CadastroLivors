@@ -6,6 +6,10 @@ namespace CadastroLivros.MVC.App_Start
     using System;
     using System.Web;
     using CadastroLivros.Application;
+    using CadastroLivros.Application.Interfaces;
+    using CadastroLivros.Domain.Interfaces.Repositories;
+    using CadastroLivros.Domain.Interfaces.Services;
+    using CadastroLivros.Infra.Data.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -61,7 +65,15 @@ namespace CadastroLivros.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(AppServiceBase<>)).To(typeof(AppServiceBase<>));
+            kernel.Bind(typeof(IAppBaseService<>)).To(typeof(AppServiceBase<>));
+            kernel.Bind<IAppLivroService>().To<AppLivroService>();
+            kernel.Bind<IAppAssuntoService>().To<AppAssuntoService>();
+            kernel.Bind<IAppAutorService>().To<AppAutorService>();
+
+            kernel.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
+            kernel.Bind<ILivroRepository>().To<LivroRepository>();
+            kernel.Bind<IAssuntoRepository>().To<AssuntoRepository>();
+            kernel.Bind<IAutorRepository>().To<AutorRepository>();
         }
     }
 }
