@@ -9,34 +9,44 @@ namespace CadastroLivros.Application
     {
         private readonly IBaseService<TEntity> _baseService;
 
+        public AppServiceBase()
+        {
+
+        }
+
+        public AppServiceBase(IBaseService<TEntity> baseService)
+        {
+            _baseService = baseService;
+        }
+
         public void Add(TEntity obj)
         {
-            throw new NotImplementedException();
+            _baseService.Add(obj);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _baseService.Dispose();
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _baseService.GetAll();
         }
 
         public TEntity GetById(int id)
         {
-            throw new NotImplementedException();
+            return _baseService.GetById(id);
         }
 
         public void Remove(TEntity obj)
         {
-            throw new NotImplementedException();
+            _baseService.Remove(obj);
         }
 
         public void Update(TEntity obj)
         {
-            throw new NotImplementedException();
+            _baseService.Update(obj);
         }
     }
 }
