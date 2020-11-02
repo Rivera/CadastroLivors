@@ -2,7 +2,7 @@
 
 namespace CadastroLivros.Domain.Interfaces.Repositories
 {
-    public interface ILivroRepository : IBaseRepository<Livro>
+    public interface ILivroRepository
     {
     }
 }

@@ -1,15 +1,15 @@
-﻿using CadastroLivros.Application.Interfaces;
-using CadastroLivros.Domain.Entities;
+﻿using CadastroLivros.Domain.Entities;
 using CadastroLivros.Domain.Interfaces.Repositories;
+using CadastroLivros.Domain.Interfaces.Services;
 using System.Collections.Generic;
 
-namespace CadastroLivros.Application
+namespace CadastroLivros.Domain.Services
 {
-    public class AppAssuntoService : IAppAssuntoService
+    public class AssuntoService : IAssuntoService
     {
         private readonly IBaseRepository<Assunto> _repository;
 
-        public AppAssuntoService(IBaseRepository<Assunto> repository)
+        public AssuntoService(IBaseRepository<Assunto> repository)
         {
             _repository = repository;
         }

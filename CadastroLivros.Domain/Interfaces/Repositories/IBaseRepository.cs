@@ -10,6 +10,5 @@ namespace CadastroLivros.Domain.Interfaces.Repositories
         void Add(TEntity obj);
         void Update(TEntity obj);
         void Remove(TEntity obj);
-        void Dispose();
     }
 }

@@ -16,11 +16,6 @@ namespace CadastroLivros.Infra.Data.Repositories
             Db.SaveChanges();
         }
 
-        public void Dispose()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public IEnumerable<TEntity> GetAll()
         {
             return Db.Set<TEntity>().ToList();

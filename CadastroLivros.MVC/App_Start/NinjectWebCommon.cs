@@ -65,7 +65,6 @@ namespace CadastroLivros.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IAppBaseService<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IAppLivroService>().To<AppLivroService>();
             kernel.Bind<IAppAssuntoService>().To<AppAssuntoService>();
             kernel.Bind<IAppAutorService>().To<AppAutorService>();

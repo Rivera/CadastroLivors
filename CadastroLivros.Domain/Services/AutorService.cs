@@ -1,15 +1,15 @@
-﻿using CadastroLivros.Application.Interfaces;
-using CadastroLivros.Domain.Entities;
+﻿using CadastroLivros.Domain.Entities;
 using CadastroLivros.Domain.Interfaces.Repositories;
+using CadastroLivros.Domain.Interfaces.Services;
 using System.Collections.Generic;
 
-namespace CadastroLivros.Application
+namespace CadastroLivros.Domain.Services
 {
-    public class AppAutorService : IAppAutorService
+    public class AutorService : IAutorService
     {
-        private readonly IBaseRepository<Autor> _repository;
+        public readonly IBaseRepository<Autor> _repository;
 
-        public AppAutorService(IBaseRepository<Autor> repository)
+        public AutorService(IBaseRepository<Autor> repository)
         {
             _repository = repository;
         }
