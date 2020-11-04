@@ -23,6 +23,9 @@ namespace CadastroLivros.Infra.Data.EntityConfig
             Property(l => l.AnoPublicacao)
                 .IsRequired()
                 .HasMaxLength(4);
+
+            Property(l => l.Valor)
+                .IsRequired();
         }
     }
 }

@@ -32,26 +32,18 @@ namespace CadastroLivros.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
 
-            modelBuilder.Entity<Livro>()
-                .HasMany(a => (ICollection<Assunto>)a.Assuntos)
-                .WithMany(l => (ICollection<Livro>)l.Livros)
-                .Map(la =>
-                {
-                    la.MapLeftKey("LivroID");
-                    la.MapRightKey("AssuntoID");
-                    la.ToTable("Livro_Assunto");
-                });
+            modelBuilder.Entity<LivroAutor>().HasKey(la => new { la.AutorId, la.LivroId });
 
-            modelBuilder.Entity<Livro>()
-                .HasMany(a => (ICollection<Autor>)a.Autores)
-                .WithMany(l => (ICollection<Livro>)l.Livros)
-                .Map(la =>
-                {
-                    la.MapLeftKey("LivroID");
-                    la.MapRightKey("AutorID");
-                    la.ToTable("Livro_Autor");
-                });
-            
+            modelBuilder.Entity<Autor>()
+                .HasMany(la => la.Livros)
+                .WithRequired()
+                .HasForeignKey(la => la.Autores);
+
+            modelBuilder.Entity<Assunto>()
+                .HasMany(la => la.Livros)
+                .WithRequired()
+                .HasForeignKey(la => la.Assuntos);
+
             modelBuilder.Configurations.Add(new LivroConfiguration());
             modelBuilder.Configurations.Add(new AutorConfiguration());
             modelBuilder.Configurations.Add(new AssuntoConfiguration());

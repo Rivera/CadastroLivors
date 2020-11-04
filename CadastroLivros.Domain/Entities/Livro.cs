@@ -14,7 +14,8 @@ namespace CadastroLivros.Domain.Entities
         public string Editora { get; set; }
         public int Edicao { get; set; }
         public string AnoPublicacao { get; set; }
-        public virtual IEnumerable<Autor> Autores { get; set; }
-        public virtual IEnumerable<Assunto> Assuntos { get; set; }
+        public double Valor { get; set; }
+        public virtual ICollection<Autor> Autores { get; set; }
+        public virtual ICollection<Assunto> Assuntos { get; set; }
     }
 }
