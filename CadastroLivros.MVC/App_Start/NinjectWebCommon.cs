@@ -1,69 +1,38 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CadastroLivros.MVC.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CadastroLivros.MVC.App_Start.NinjectWebCommon), "Stop")]
-
 namespace CadastroLivros.MVC.App_Start
 {
     using System;
-    using System.Web;
     using CadastroLivros.Application;
     using CadastroLivros.Application.Interfaces;
     using CadastroLivros.Domain.Interfaces.Repositories;
     using CadastroLivros.Domain.Interfaces.Services;
+    using CadastroLivros.Domain.Services;
     using CadastroLivros.Infra.Data.Repositories;
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
-    using Ninject.Web.Common;
-    using Ninject.Web.Common.WebHost;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
 
-    public static class NinjectWebCommon 
+    public class NinjectDependencyResolver : IDependencyResolver
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private IKernel kernel;
 
-        /// <summary>
-        /// Starts the application.
-        /// </summary>
-        public static void Start() 
+        public NinjectDependencyResolver()
         {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            // Initialize kernel and add bindings
+            kernel = new StandardKernel();
+            AddBindings();
         }
 
-        /// <summary>
-        /// Stops the application.
-        /// </summary>
-        public static void Stop()
+        public object GetService(Type serviceType)
         {
-            bootstrapper.ShutDown();
+            return kernel.TryGet(serviceType);
         }
 
-        /// <summary>
-        /// Creates the kernel that will manage your application.
-        /// </summary>
-        /// <returns>The created kernel.</returns>
-        private static IKernel CreateKernel()
+        public IEnumerable<object> GetServices(Type serviceType)
         {
-            var kernel = new StandardKernel();
-            try
-            {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                RegisterServices(kernel);
-                return kernel;
-            }
-            catch
-            {
-                kernel.Dispose();
-                throw;
-            }
+            return kernel.GetAll(serviceType);
         }
 
-        /// <summary>
-        /// Load your modules or register your services here!
-        /// </summary>
-        /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IKernel kernel)
+        private void AddBindings()
         {
             kernel.Bind<IAppLivroService>().To<AppLivroService>();
             kernel.Bind<IAppAssuntoService>().To<AppAssuntoService>();
@@ -73,6 +42,10 @@ namespace CadastroLivros.MVC.App_Start
             kernel.Bind<ILivroRepository>().To<LivroRepository>();
             kernel.Bind<IAssuntoRepository>().To<AssuntoRepository>();
             kernel.Bind<IAutorRepository>().To<AutorRepository>();
+
+            kernel.Bind<ILivroService>().To<LivroService>();
+            kernel.Bind<IAutorService>().To<AutorService>();
+            kernel.Bind<IAssuntoService>().To<AssuntoService>();
         }
     }
 }
