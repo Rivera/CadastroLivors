@@ -1,42 +1,43 @@
 ﻿using CadastroLivros.Application.Interfaces;
 using CadastroLivros.Domain.Entities;
 using CadastroLivros.Domain.Interfaces.Repositories;
+using CadastroLivros.Domain.Interfaces.Services;
 using System.Collections.Generic;
 
 namespace CadastroLivros.Application
 {
     public class AppLivroService : IAppLivroService
     {
-        private readonly IBaseRepository<Livro> _repository;
+        private readonly ILivroService _service;
 
-        public AppLivroService(IBaseRepository<Livro> repository)
+        public AppLivroService(ILivroService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         public void Add(Livro obj)
         {
-            _repository.Add(obj);
+            _service.Add(obj);
         }
 
         public IEnumerable<Livro> GetAll()
         {
-            return _repository.GetAll();
+            return _service.GetAll();
         }
 
         public Livro GetById(int id)
         {
-            return _repository.GetById(id);
+            return _service.GetById(id);
         }
 
         public void Remove(Livro obj)
         {
-            _repository.Remove(obj);
+            _service.Remove(obj);
         }
 
         public void Update(Livro obj)
         {
-            _repository.Update(obj);
+            _service.Update(obj);
         }
     }
 }

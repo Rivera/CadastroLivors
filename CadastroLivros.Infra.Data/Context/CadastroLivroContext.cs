@@ -34,7 +34,7 @@ namespace CadastroLivros.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
 
-            modelBuilder.Entity<LivroAutor>().HasKey(la => new { la.AutorId, la.LivroId });
+            //modelBuilder.Entity<LivroAutor>().HasKey(la => new { la.AutorId, la.LivroId });
 
             modelBuilder.Entity<Autor>()
                 .HasMany(la => la.Livros)

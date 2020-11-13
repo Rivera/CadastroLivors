@@ -1,42 +1,42 @@
 ﻿using CadastroLivros.Application.Interfaces;
 using CadastroLivros.Domain.Entities;
-using CadastroLivros.Domain.Interfaces.Repositories;
+using CadastroLivros.Domain.Interfaces.Services;
 using System.Collections.Generic;
 
 namespace CadastroLivros.Application
 {
     public class AppAutorService : IAppAutorService
     {
-        private readonly IBaseRepository<Autor> _repository;
+        private readonly IAutorService _service;
 
-        public AppAutorService(IBaseRepository<Autor> repository)
+        public AppAutorService(IAutorService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         public void Add(Autor obj)
         {
-            _repository.Add(obj);
+            _service.Add(obj);
         }
 
         public IEnumerable<Autor> GetAll()
         {
-            return _repository.GetAll();
+            return _service.GetAll();
         }
 
         public Autor GetById(int id)
         {
-            return _repository.GetById(id);
+            return _service.GetById(id);
         }
 
         public void Remove(Autor obj)
         {
-            _repository.Remove(obj);
+            _service.Remove(obj);
         }
 
         public void Update(Autor obj)
         {
-            _repository.Update(obj);
+            _service.Update(obj);
         }
     }
 }

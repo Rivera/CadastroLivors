@@ -45,8 +45,6 @@
     <Compile Include="Entities\Autor.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Livro.cs" />
-    <Compile Include="Entities\LivroAssunto.cs" />
-    <Compile Include="Entities\LivroAutor.cs" />
     <Compile Include="Interfaces\Repositories\IAssuntoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAutorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IBaseRepository.cs" />

@@ -6,6 +6,5 @@ namespace CadastroLivros.Infra.Data.Repositories
 {
     public class LivroRepository : BaseRepository<Livro>, ILivroRepository
     {
-
     }
 }
